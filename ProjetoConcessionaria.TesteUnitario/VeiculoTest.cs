@@ -42,8 +42,7 @@ namespace ProjetoConcessionaria.TesteUnitario
         public void TestarGetESetDeAno()
         {
             //Arrange
-            var anoEsperado = DateTime.Now.ToString("dd/MM/yyyy")
-            ;
+            var anoEsperado = DateTime.Now;
             var veiculo = CriarVeiculoPadrao();
 
             //Act
@@ -51,7 +50,7 @@ namespace ProjetoConcessionaria.TesteUnitario
             var anoAtual = veiculo.GetAno();
 
             //Assert
-            Assert.Equal(anoEsperado, anoAtual.ToString("dd/MM/yyyy"));
+            Assert.Equal(anoEsperado, anoAtual);
         }
 
         [Fact]
@@ -103,7 +102,7 @@ namespace ProjetoConcessionaria.TesteUnitario
         public void VeiculoNaoPodeTerAnoMenorQue2004()
         {
             //Arrange
-            var anoEsperado = "01/01/2003";
+            var anoEsperado = DateTime.Parse("01/01/2003");
             var veiculo = CriarVeiculoPadrao();
 
             //Act e Assert
@@ -115,7 +114,7 @@ namespace ProjetoConcessionaria.TesteUnitario
         public void VeiculoNaoPodeTerAnoMaiorQueoAtual()
         {
             //Arrange
-            var anoEsperado = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
+            var anoEsperado = DateTime.Now.AddDays(2);
             var veiculo = CriarVeiculoPadrao();
 
             //Act e Assert
@@ -125,7 +124,7 @@ namespace ProjetoConcessionaria.TesteUnitario
 
         public Veiculo CriarVeiculoPadrao()
         {
-            return new Veiculo("Teste", "Teste", DateTime.Now.ToString("dd/MM/yyyy"), 0, "Vermelho", 5000);
+            return new Veiculo("Teste", "Teste", DateTime.Now, 0, "Vermelho", 5000);
         }
 
     }

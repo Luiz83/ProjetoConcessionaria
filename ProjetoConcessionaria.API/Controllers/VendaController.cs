@@ -12,6 +12,13 @@ public class VendaController : ControllerBase
 {
     public static List<VendaDto> VendasDaClasse { get; set; } = new List<VendaDto>();
 
+     public ILogger<VendaController> Log { get; set; }
+
+    public VendaController(ILogger<VendaController> log)
+    {
+        Log = log;
+    }
+
     [HttpPost("SetVenda")]
     public IActionResult SetVenda(VendaDto vendaDto)
     {
@@ -23,6 +30,7 @@ public class VendaController : ControllerBase
         }
         catch (ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

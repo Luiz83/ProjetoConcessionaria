@@ -12,17 +12,25 @@ public class VeiculoController : ControllerBase
 {
     public static List<VeiculoDto> VeiculosDaClasse { get; set; } = new List<VeiculoDto>();
 
+    public ILogger<VeiculoController> Log { get; set; }
+
+    public VeiculoController(ILogger<VeiculoController> log)
+    {
+        Log = log;
+    }
+
     [HttpPost("SetVeiculo")]
     public IActionResult SetVeiculo(VeiculoDto veiculoDto)
     {
         try
         {
-            var veiculo = new Veiculo(veiculoDto.Marca, veiculoDto.Modelo, veiculoDto.Ano.ToString("yyyy"), veiculoDto.Quilometragem, veiculoDto.Cor, veiculoDto.Valor);
+            var veiculo = new Veiculo(veiculoDto.Marca, veiculoDto.Modelo, veiculoDto.Ano, veiculoDto.Quilometragem, veiculoDto.Cor, veiculoDto.Valor);
             VeiculosDaClasse.Add(veiculoDto);
             return Ok(VeiculosDaClasse);
         }
         catch (ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

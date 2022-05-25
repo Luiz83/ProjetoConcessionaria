@@ -11,7 +11,7 @@ namespace ProjetoConcessionaria.Lib.Models
         private string Cor { get; set; }
         protected double Valor { get; set; }
 
-        public Veiculo(string marca, string modelo, string ano, int quilometragem, string cor, double valor)
+        public Veiculo(string marca, string modelo, DateTime ano, int quilometragem, string cor, double valor)
         {
             SetMarca(marca);
             SetModelo(modelo);
@@ -39,10 +39,10 @@ namespace ProjetoConcessionaria.Lib.Models
         {
             return Modelo;
         }
-        public void SetAno(string ano)
+        public void SetAno(DateTime ano)
         {
             ValidarAno(ano);
-            Ano = DateTime.Parse(ano);
+            Ano = ano;
         }
         public DateTime GetAno()
         {
@@ -79,9 +79,9 @@ namespace ProjetoConcessionaria.Lib.Models
             return Valor;
         }
 
-        public bool ValidarAno(string ano)
+        public bool ValidarAno(DateTime ano)
         {
-            var data = DateTime.Parse(ano);
+            var data = ano;
             if (data >= DateTime.Parse("01/01/2004") && data < DateTime.Now)
                 return true;
             throw new ErroDeValidacaoException("Ano do carro tem que ser entre 2004 e o ano atual!");

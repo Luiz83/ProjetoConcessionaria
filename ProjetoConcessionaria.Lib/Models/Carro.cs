@@ -7,7 +7,7 @@ namespace ProjetoConcessionaria.Lib.Models
         private bool TransmissaoAutomatica { get; set; }
         private string Combustivel { get; set; }
 
-        public Carro(string marca, string modelo, string ano, int quilometragem, string cor, double valor,
+        public Carro(string marca, string modelo, DateTime ano, int quilometragem, string cor, double valor,
                      bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, quilometragem, cor, valor)
         {
             SetTransmissaoAutomatica(transmissaoAutomatica);

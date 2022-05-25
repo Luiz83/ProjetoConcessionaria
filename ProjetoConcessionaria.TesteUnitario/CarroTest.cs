@@ -65,7 +65,7 @@ public class CarroTest
 
     public Carro CriarCarroPadrao()
     {
-        return new Carro("Teste", "Teste", DateTime.Now.ToString("dd/MM/yyyy"), 0, "Vermelho", 5000, true, "Gasolina");
+        return new Carro("Teste", "Teste", DateTime.Now, 0, "Vermelho", 5000, true, "Gasolina");
     }
 
 }

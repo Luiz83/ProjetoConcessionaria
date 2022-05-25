@@ -1,3 +1,5 @@
+using System;
+
 namespace ProjetoConcessionaria.API.DTOs
 {
     public class VeiculoDto

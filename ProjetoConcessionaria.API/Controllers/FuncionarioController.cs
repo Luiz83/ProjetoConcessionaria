@@ -12,6 +12,13 @@ public class FuncionarioController : ControllerBase
 {
     public static List<FuncionarioDto> FuncionariosDaClasse { get; set; } = new List<FuncionarioDto>();
 
+    public ILogger<FuncionarioController> Log { get; set; }
+
+    public FuncionarioController(ILogger<FuncionarioController> log)
+    {
+        Log = log;
+    }
+
     [HttpPost("SetFuncionario")]
     public IActionResult SetFuncionario(FuncionarioDto funcionarioDto)
     {
@@ -22,6 +29,7 @@ public class FuncionarioController : ControllerBase
         }
         catch(ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

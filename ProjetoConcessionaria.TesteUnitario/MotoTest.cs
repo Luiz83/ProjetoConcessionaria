@@ -65,7 +65,7 @@ public class MotoTest
 
     public Moto CriarMotoPadrao()
     {
-        return new Moto("Teste", "Teste", DateTime.Now.ToString("dd/MM/yyyy"), 0, "Vermelho", 2000, 600, "Eletronica");
+        return new Moto("Teste", "Teste", DateTime.Now, 0, "Vermelho", 2000, 600, "Eletronica");
     }
 
 }

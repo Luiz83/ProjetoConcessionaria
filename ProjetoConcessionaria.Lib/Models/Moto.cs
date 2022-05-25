@@ -7,7 +7,7 @@ namespace ProjetoConcessionaria.Lib.Models
         private int Cilindrada { get; set; }
         private string Partida { get; set; }
 
-        public Moto(string marca, string modelo, string ano, int quilometragem, string cor, double valor,
+        public Moto(string marca, string modelo, DateTime ano, int quilometragem, string cor, double valor,
                      int cilindrada, string partida) : base(marca, modelo, ano, quilometragem, cor, valor)
         {
             SetCilindrada(cilindrada);

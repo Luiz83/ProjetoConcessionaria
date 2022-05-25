@@ -12,6 +12,13 @@ public class ClienteController : ControllerBase
 {
     public static List<ClienteDto> ClientesDaClasse { get; set; } = new List<ClienteDto>();
 
+    public ILogger<ClienteController> Log { get; set; }
+
+    public ClienteController(ILogger<ClienteController> log)
+    {
+        Log = log;
+    }
+
     [HttpPost("SetCliente")]
     public IActionResult SetCliente(ClienteDto clienteDto)
     {
@@ -23,6 +30,7 @@ public class ClienteController : ControllerBase
         }
         catch (ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

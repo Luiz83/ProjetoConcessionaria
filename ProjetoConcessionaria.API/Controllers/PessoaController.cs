@@ -13,6 +13,13 @@ public class PessoaController : ControllerBase
 {
     public static List<PessoaDto> PessoasDaClasse { get; set; } = new List<PessoaDto>();
 
+    public ILogger<PessoaController> Log { get; set; }
+
+    public PessoaController(ILogger<PessoaController> log)
+    {
+        Log = log;
+    }
+
     [HttpPost("SetPessoa")]
     public IActionResult SetPessoa(PessoaDto pessoaDto)
     {
@@ -24,6 +31,7 @@ public class PessoaController : ControllerBase
         }
         catch (ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

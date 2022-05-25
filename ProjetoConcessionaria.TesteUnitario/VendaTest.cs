@@ -1,3 +1,4 @@
+using System;
 using ProjetoConcessionaria.Lib.Models;
 using Xunit;
 namespace ProjetoConcessionaria.TesteUnitario;
@@ -106,7 +107,7 @@ public class VendaTest
 
     public Carro CriarCarroPadrao()
     {
-        return new Carro("Teste", "Teste", "01/01/2022", 0, "Vermelho", 5000, true, "Gasolina");
+        return new Carro("Teste", "Teste", DateTime.Parse("01/01/2022"), 0, "Vermelho", 5000, true, "Gasolina");
     }
     public Cliente CriarClientePadrao()
     {
